@@ -32,15 +32,27 @@ function App() {
             {/* JSX의 htmlFor는 자바스크립트에 더 가깝습니다 */}
             <label htmlFor="search">검색창: </label>
             <input id="search" type="text" />
+        
+        <br />
+        <br />
+        <hr />
+        <br />
 
-            <ul>
-                {listToDo.map(function (item) {
-                    return <li key={item}>{item.taskName}, {item.frequency}</li>;
-                })}
-            </ul>
+        {/* 새로운 Component 사용하기 */}
+        <h2>새로운 component의 시작!</h2>
+        <List />
 
         </div>
     );
+}
+
+function List() {
+    return (
+    <ul>
+            {listToDo.map(function (item) {
+                    return <li key={item.objectID}>{item.taskName}, {item.frequency}</li>;
+                })}
+            </ul>);
 }
 
 export default App;
