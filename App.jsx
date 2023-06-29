@@ -11,14 +11,17 @@ function getTest(text) {
 
 const listToDo = [
     {
+        id: 1,
         taskName: '청소하기',
         frequency: '1주일에 한번',
     },
     {
+        id: 2,
         taskName: '개발공부하기',
         frequency: '1주일에 5번',
     },
     {
+        id: 3,
         taskName: '요리하기',
         frequency: '1주일에 3번',
     }
@@ -30,8 +33,11 @@ function App() {
             <h1>{welcome.intro} - {welcome.title} {getTest('테스트입니다!')}</h1>
             
             {/* JSX의 htmlFor는 자바스크립트에 더 가깝습니다 */}
-            <label htmlFor="search">검색창: </label>
-            <input id="search" type="text" />
+            {/* <label htmlFor="search">검색창: </label>
+            <input id="search" type="text" /> */}
+
+            <Search />
+
         
         <br />
         <br />
@@ -50,9 +56,24 @@ function List() {
     return (
     <ul>
             {listToDo.map(function (item) {
-                    return <li key={item.objectID}>{item.taskName}, {item.frequency}</li>;
+                    return <li key={item.id}>{item.taskName}, {item.frequency}</li>;
                 })}
             </ul>);
+}
+
+const Search = () => {
+
+    const handleChange = (event) => {
+        console.log(event); /* 이벤트 관련 */
+        console.log(event.target.value); /* 이벤트가 영향시키는 HTML 아이템 */
+    }
+
+    return (
+        <div>
+            <label htmlFor="search">검색: </label>
+            <input id="search" type="text" onChange={handleChange} />
+        </div>
+    )
 }
 
 export default App;
